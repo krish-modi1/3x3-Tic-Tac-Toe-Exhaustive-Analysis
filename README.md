@@ -123,7 +123,7 @@ In the early game (moves 1-3), the chance of winning stays close to 50-60%. This
 
 This acceleration around Layer 5 marks a **critical phase transition** where individual moves begin to create irreversible strategic advantages. States at this depth exhibit sharp probability cliffs: making the "wrong" move can shift $P(X \text{ wins})$ by 0.3-0.5 in a single turn.
 
-![Figure 1: Hierarchical Probability Progression](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/position4_analysis.png)
+![Figure 1: Hierarchical Probability Progression](https://github.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/blob/main/outputs/position4_analysis.png?raw=1)
 
 *Description: 3×3 grid showing parent-child probability differences $|\Delta P|$ for each layer transition. Shows sharp increase at Layer 5 (⟨|ΔP|⟩ = 0.194-0.256).*
 
