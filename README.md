@@ -123,7 +123,7 @@ In the early game (moves 1-3), the chance of winning stays close to 50-60%. This
 
 This acceleration around Layer 5 marks a **critical phase transition** where individual moves begin to create irreversible strategic advantages. States at this depth exhibit sharp probability cliffs: making the "wrong" move can shift $P(X \text{ wins})$ by 0.3-0.5 in a single turn.
 
-![Figure 1: Hierarchical Probability Progression](https://github.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/blob/main/outputs/position4_analysis.png?raw=1)
+![Figure 1: Hierarchical Probability Progression](position_diff_plots/x_wins/position_4_diff_analysis.png)
 
 *Description: 3×3 grid showing parent-child probability differences $|\Delta P|$ for each layer transition. Shows sharp increase at Layer 5 (⟨|ΔP|⟩ = 0.194-0.256).*
 
@@ -144,7 +144,7 @@ To test whether specific squares possess intrinsic strategic value (e.g., "cente
 
 This 10-13 percentage point difference demonstrates that corner responses are stronger defenses against a center opening—a fact well-known in Tic-Tac-Toe strategy.
 
-![Figure 3a: Layer 1 Heatmap - Early Game](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/heatmaps/layer1_heatmap.png)
+![Figure 3a: Layer 1 Heatmap - Early Game](next_move_heatmaps/P_X_wins/layer_1/state_0_0_0_1_0_0_0_0_0_O_nextmove.png)
 
 *Description: Single 3×3 board heatmap showing $P(X \text{ wins})$ values if next move played at each empty position (Layer 1). Demonstrates high value of center square when board is empty.*
 
@@ -168,11 +168,11 @@ Heatmap analysis reveals:
 
 In this configuration, a **corner move** (position 6) is dramatically superior to an **edge move** (position 3), despite edge squares being "more central" geometrically. The corner creates a double-threat scenario (row 3 + diagonal), while the edge fails to generate winning lines.
 
-![Figure 3b: Layer 3 Heatmap - Mid Game](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/heatmaps/layer3_heatmap.png)
+![Figure 3b: Layer 3 Heatmap - Mid Game](next_move_heatmaps/P_X_wins/layer_3/state_0_0_0_0_1_1_0_0_-1_O_nextmove.png)
 
 *Description: Single 3×3 board heatmap showing context-dependent square values. Corner move (position 6) yields P(X wins)=0.87, while edge move (position 3) yields P(X wins)=0.44.*
 
-![Figure 3c: Layer 5 Heatmap - Late Game](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/heatmaps/layer5_heatmap.png)
+![Figure 3c: Layer 5 Heatmap - Late Game](next_move_heatmaps/P_X_wins/layer_5/state_0_0_0_1_-1_-1_1_0_1_O_nextmove.png)
 
 *Description: Single 3×3 board heatmap (Layer 5, near endgame) showing polarized square values approaching {0, 1}. Shows deterministic nature of late-game positions.*
 
@@ -212,7 +212,7 @@ State A: X | O | X     State B: X | . | O
 
 Both have $P(X \text{ wins}) = 1.0$ despite arising from different opening sequences. This indicates they belong to the same **strategic equivalence class**—the specific move order that produced them is irrelevant; only the final configuration matters.
 
-![Figure 4: Layer 2 Reference Analysis](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/position4_l2ref_analysis.png)
+![Figure 4: Layer 2 Reference Analysis](layer2_reference_plots/x_wins/position_4_l2ref_analysis.png)
 
 *Description: 3×3 grid showing Layer 2 genealogy analysis. Demonstrates how states descending from different Layer 2 ancestors converge to identical probabilities by Layer 6, revealing equivalence classes.*
 
@@ -268,7 +268,7 @@ where $k$ is the state's index in hierarchical order, and $A, \text{period}, \ph
 
 **Average across all layers: MAE = 0.116, RMSE = 0.150**
 
-![Figure 5: Feature-Based Model Performance](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/position4_fourier_branch.png)
+![Figure 5: Feature-Based Model Performance](fourier_analysis/position_4_fourier_branch.png)
 
 *Description: 3×3 grid showing actual vs predicted $P(X \text{ wins})$ for each layer, with MAE and RMSE statistics displayed. Blue lines show actual probabilities, red dashed lines show predictions.*
 
@@ -311,7 +311,7 @@ where $j(i)$ maps the $i$-th state at Layer $N$ to its parent at Layer $N-1$, an
 
 **Interpretation:** The weights are **highly inconsistent** ($\beta \in [0.54, 0.91]$, std = 0.145). This violates the self-similarity hypothesis. If layers were fractal-like repetitions, we would expect $\beta \approx \text{constant}$ across all transitions. Instead, the weight fluctuates dramatically, peaking at the phase transition (Layer 4-5) where $\beta = 0.539$ indicates weak parent-child correlation.
 
-![Figure 6: Recursive Layer Relationship Testing](https://raw.githubusercontent.com/krish-modi1/3x3-Tic-Tac-Toe-Exhaustive-Analysis/main/outputs/position4_recursive_analysis.png)
+![Figure 6: Recursive Layer Relationship Testing](difference_plots_analysis/position_4_recursive_analysis.png)
 
 *Description: 3×3 grid showing actual vs predicted using recursive formula for each transition, with learned weights $\beta$ displayed. Shows inconsistency of weights across layers.*
 
